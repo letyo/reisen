@@ -1,0 +1,505 @@
+body, html {
+    height: 100%;
+    min-height: 525px;
+    margin: 0;
+    min-width: 600px;
+}
+
+body {
+    background-color: black;
+}
+
+
+/*------------- töltő képernyő -------------------*/
+
+#loading {
+    width: 100%;
+    height: 100%;
+    z-index: 1000000;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: black;
+    display: flex;
+    align-items: center;
+}
+
+#loader {
+    display: block;
+    margin: 0 auto;
+
+    border-top: 5px solid blue;
+    border-bottom: 5px solid #76ff03;
+
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 2s linear infinite;
+}
+
+#loading p {
+    display: block;
+    color: #76ff03;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/*------------- a menü formázása/létrehozása -------------------*/
+
+#header {
+    position: fixed;
+    margin: auto;
+    width: 100%;
+    background-color: black;
+    color: white;
+    min-width: 600px;
+}
+
+#menu_header {
+    float: left;
+    min-width: 375px;
+}
+
+#login_header {
+    float: right;
+    width: 25%;
+    min-width: 220px;
+    text-align: center
+}
+
+.menu_header, 
+.login_header {
+    margin: 0.25rem;
+    color: #64dd17;
+}
+
+.menu_buttons,
+.login_buttons,
+.modal_body input[type="submit"] {
+    border: none;
+    border-radius: 5px;
+    background-color: #76ff03;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+}
+
+.modal_body input[type="submit"] {
+    margin-top: 1rem;
+}
+
+.menu_buttons:hover,
+.login_buttons:hover,
+.modal_body input[type="submit"]:hover {
+    opacity: 0.8;
+}
+
+.menu_buttons {
+    display: inline-block;
+    padding: 0.25rem;
+    margin-right: 0.5rem;
+}
+
+.menu_header,
+.menu_buttons:first-child {
+    margin-left: 2rem;
+}
+
+.menu_header {
+    margin-top: 1rem;
+}
+
+
+/*------------- a modal formázása/létrehozása a belépéshez/regisztrációhoz -------------------*/
+
+/* a modal formázása (a modal box mögötti rész formázása (pl.: minden más sötét lesz az egész weboldalon, csak a modal box nem)) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    /* így beteríti az egész oldalt ill. képernyőt */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* lehetővé teszi a görgetést, ha szükséges (nagyobb az oldal mint a képernyő) */
+    /* célszerű vmilyen háttérszínt beállítani h a weblap többi része kissé elhalványuljon/eltűnjön és így még inkább felvonni a figyelmet a modal box-ra */
+    background-color: black; /* fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* 60 %-ban áttetsző fekete */
+}
+
+/* a modal box formázása */
+.modal_content {
+    margin: 10% auto;   /* 15 %-ra az oldal/képernyő tetejétől és középre igazítva */
+    width: 25%;
+    min-width: 15rem;
+    height: 20rem;
+    /* ha a modal box-nak árnyékot akarok*/
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: black; /* fallback color */
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal_header {
+    padding: 0.1rem 0.25rem;
+}
+
+/* a modal címe */
+.modal_header_text {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #64dd17;
+}
+
+/* a bezáró gomb formázása */
+.close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #76ff03;
+}
+
+.close:hover, 
+.close:focus {
+    color: red;
+}
+
+/* a modal interaktív tartalma*/
+.modal_body {
+    text-align: center;
+    margin: 1rem;
+    margin-top: 0.5rem;
+    line-height: 2;
+    color: #76ff03;
+}
+
+.errors {
+    color: red;
+    font-weight: bold;
+    line-height: 1;
+}
+
+
+/* ----------------- elements in parallax ----------------------------*/
+
+.left,
+.right {
+    width: 40%;
+    min-width: 200px;
+    padding: 1rem;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.title,
+.price,
+.info_container,
+.home p {
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+}
+
+.title {
+    margin-top: 3rem;
+    font-size: 3rem;
+    font-style: italic;
+}
+
+.lightbox_button,
+.home img {
+    border: 5px solid rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
+
+.lightbox_button {
+    margin-top: 7.5rem; 
+    width: 50%;
+    min-width: 200px;
+    cursor: pointer;
+}
+
+.lightbox_button:hover {
+    filter: brightness(120%);
+    -webkit-filter: brightness(120%);
+}
+
+.price {
+    margin-top: 9.5rem;
+    font-size: 1.25rem;
+}
+
+.price span {
+    text-decoration: underline;
+}
+
+.info_container {
+    margin-top: 4.5rem;
+}
+
+.info_container p {
+    text-decoration: underline;
+}
+
+.info_container li {
+    font-style: italic;
+}
+
+.home p {
+    margin-top: 4rem;
+    width: 75%;
+    text-align: center;
+}
+
+.home img {
+    margin-top: 1rem;
+    max-height: 25%;
+}
+
+
+/* ----------------- parallax ----------------------------*/
+
+.home, 
+.home_content,
+.parallax {
+    margin: auto;
+    
+    /* Full height, ha px-ben akarom megadni akkor a body-html height-ot is akkorára kell állítani px-ben */
+    height: 100%;
+    width: 85%;
+    min-width: 300px;
+    max-width: 2000px;
+
+    color: #64dd17;
+}
+
+.home {
+    width: 100%;
+    background-image: url("../img/home.jpg");
+    background-size: cover;
+    text-align: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.home_content {
+    background-color: black;
+}
+
+.parallax {
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* ----------------- lightbox ----------------------------*/
+
+.lightbox_modal img {
+    max-width: 100%;
+    min-width: 200px;
+}
+
+.column img {
+	max-width: 200px;
+}
+
+.slideshow_container {
+    text-align: center;
+
+}
+
+.slideshow_container img {
+    height: 65vh;
+    object-fit: contain;
+}
+
+.row {
+    display: inline-flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+    width: 100%;
+    height: 30vh;
+}
+
+/* ha több képet akarok megjeleníteni egy sorban akkor a width: 25%-ot meg kell változtatni */
+.column {
+    margin: auto;
+    float: left;
+    padding: 15px 5px 5px; /* ha nem akarok a kis képek között szünetet akkor azt ki kell venni, ha csak a slideshow alatti kis képek között nem akarok szünetet akkor így kell beírni: .row > .column {padding: 0 8px;} */
+
+}
+
+/* The Modal (background) */
+.lightbox_modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10000; /* Sit on top */
+    padding-top: 2.5vh; /* Location of the box, ha azt akarjuk h ne közvetlenül az odal tetejére kerüljön */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* lehetővé teszi a görgetést, ha szükséges (nagyobb az oldal mint a képernyő) */
+    /* célszerű vmilyen háttérszínt beállítani h a weblap többi része kissé elhalványuljon/eltűnjön és így még inkább felvonni a figyelmet a modal box-ra */
+    background-color: black; /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.85); /* 10 %-ban áttetsző fekete */
+}
+
+/* Modal Content */
+.lightbox_content {
+    position: relative;
+    background-color: black;
+    margin: auto;
+    padding: 0;
+    /* a modal-content mérete és max mérete, ha nincs megadva, akkor a képet az eredeti méretben tölti be így növelve esetlegesen a modal-content méretét is */
+    width: 85%;
+    max-width: 1200px;
+    /* az animáció, amikor "rázoomolunk" (amikor a weblapon lévő kis képekre kattintunk és feljön a modal) */
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+/* The Close Button */
+.lightbox_close {
+    z-index: 10001;
+    color: #76ff03;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.lightbox_close:hover,
+.lightbox_close:focus {
+    color: red;
+    text-decoration: none;
+}
+
+.slideshow {
+    display: none;
+}
+
+/* Fading animation, a képek második class-sza (a slideshow-ban lévő képeknek) */
+.fade {
+   -webkit-animation-name: fade;
+   -webkit-animation-duration: 1.5s;
+   animation-name: fade;
+   animation-duration: 1.5s;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: #76ff03;
+    font-weight: bold;
+    font-size: 2rem;
+    transition: 0.6s ease;  /*hover-nél, amikor a háttérszíne feketére vált, azt nem azonnal csinálja, hanem amikor fölé visszük akkor lassan fekete lesz, majd miután elvittük az egeret lassan eltűnik a háttérszín, nem abban a pillanatban amikor elvisszük az egeret (az ease az alapértelmezett)*/
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) - jelenleg a kép jobb felső sarka*/
+.img_number {
+    color: #76ff03;
+    font-size: 1rem;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/*a modal-ban lévő kis képek class-sza - amelyik nem aktív, vagy amelyik fölött nincs egér, az kicsit áttetszőbb*/
+.demo {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.active,
+.demo:hover {
+    opacity: 1;
+}
+
+/* az animáció, amikor "rázoomolunk" (amikor a weblapon lévő kis képekre kattintunk és feljön a modal) */
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/*az animáció, amikor a slideshowban, a képek között váltunk, ahogy megjelennek (előtűnnek)*/
+@-webkit-keyframes fade {
+   from {opacity: .4} 
+   to {opacity: 1}
+}
+
+@keyframes fade {
+   from {opacity: .4} 
+   to {opacity: 1}
+}
+
+/* ----------------- to the top button ----------------------------*/
+
+.back_to_top_button {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    cursor: pointer;
+    /* hova legyen elhelyezve */
+    right: 2.5%;
+    bottom: 5%;
+    /* formázás */
+    width: 5%;
+    height: 10%;
+    background-color: #bdbdbd;
+    border-radius: 5px;
+}
+
+.back_to_top_button:hover {
+    background-color: #000;
+}
