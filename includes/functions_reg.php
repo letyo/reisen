@@ -18,7 +18,7 @@
     	}
 
     	//ellenőrzi h létezik-e az email cím
-		$stmt = $conn->prepare("SELECT user_id FROM reisen__members WHERE email = ?");
+		$stmt = $conn->prepare("SELECT user_id FROM " . TABLE_NAME_REISEN__MEMBERS . " WHERE email = ?");
 		$stmt->bind_param("s", $email);
 		$stmt->execute();
 		$stmt->store_result();
@@ -28,7 +28,7 @@
 		$stmt->close();
 
 		//ellenőrzi h létezik-e a felhasználónév cím
-		$stmt = $conn->prepare("SELECT user_id FROM reisen__members WHERE username = ?");
+		$stmt = $conn->prepare("SELECT user_id FROM " . TABLE_NAME_REISEN__MEMBERS . " WHERE username = ?");
 		$stmt->bind_param("s", $username);
 		$stmt->execute();
 		$stmt->store_result();
@@ -43,13 +43,13 @@
 			$next_valid_login_time_reg = ''; //regisztrációnál mindig helyes a bejelentkezés, tehát ez az oszlop üres kell hogy legyen
 			$session_id = '';
 
-			$stmt = $conn->prepare("INSERT INTO reisen__members(user_id, username, password, email, next_valid_login_time, session_id) VALUES(DEFAULT, ?, ?, ?, ?, ?)");
+			$stmt = $conn->prepare("INSERT INTO " . TABLE_NAME_REISEN__MEMBERS . "(user_id, username, password, email, next_valid_login_time, session_id) VALUES(DEFAULT, ?, ?, ?, ?, ?)");
 			$stmt->bind_param("sssis", $username, $password, $email, $next_valid_login_time_reg, $session_id);
 			$stmt->execute();
 			$stmt->close();
 
 			//majd kiszedi az összes adatot a táblázatból (id-t is)
-			$stmt = $conn->prepare("SELECT user_id, username, password, email FROM reisen__members WHERE username = ?");
+			$stmt = $conn->prepare("SELECT user_id, username, password, email FROM " . TABLE_NAME_REISEN__MEMBERS . " WHERE username = ?");
 			$stmt->bind_param("s", $username);
 			$stmt->execute();
 			$stmt->store_result();

@@ -9,6 +9,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Riesen Reisen</title>
+	<link rel="icon" type="image/png" href="img/favicon.png"/>
 	<link type="text/css" rel="stylesheet" href="css/main.css"/>
 	<script type="text/javascript" src="js/jQuery.js" defer></script>
 	<script type="text/javascript" src="js/main.js" defer></script>

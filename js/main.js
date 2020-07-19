@@ -36,6 +36,37 @@ $(document).ready(function() {
 			} else {
 				$p.find('.info_container').fadeOut(800);
 			}
+/* megnyitja és bezárja a modal-t, a függvények vmi miatt nem működtek ezért azokat ki is töröltem
+			//definiálja a változókat, az adott parallax terültetén
+			var slideIndex = 1;
+			var auto;
+			var j;
+
+			var $modal = $p.find('.lightbox_modal');
+			var $slides = $p.find('.slideshow');
+			var $dots = $p.find('.demo');
+
+			//ha rákattintunk a modal_button-ra akkor megnyitja a modal-t
+			$p.find('.lightbox_button').click(function() {
+				$modal.css('display', 'block');
+			});
+			//ha rákattintunk a bezáró gombra, akkor eltünteti a modal-t
+			$p.find('.lightbox_close').click(function() {
+				$modal.css('display', 'none');
+			});
+			//ha a modal_content-en kívülre kattintunk, akkor bezárja a modal-t !!!!!!!!!!!!!!!!!nem működik!!!!!!!!!!!!!!!!!!4
+			$(window).click(function(event) {
+				if (event.target == $modal) {
+					$modal.css('display', 'none');
+				}
+			});
+			//ha lenyomjuk az esc gombot, akkor bezárja a modal-t
+			$(window).keydown(function(event) {
+				if (event.keyCode == 27) {
+					$modal.css('display', 'none');
+				}
+			});
+*/
 		});
 	});
 
@@ -46,13 +77,22 @@ $(document).ready(function() {
 	console.log(document_height);
 	$links.click(function() {
 		var $link = $(this);
+		console.log($link);
 		var target = $link.data('link') //mintha attr('data-link') lenne
 		var target_place = $('[data-target="' + target + '"]').offset().top;
 		var scroll_down_speed = target_place / document_height * 2000;
 		$('html, body').animate({
-			scrollTop: target_place //('#' + target) === ('[data-target="' + target + '"]'), csak az elsőnél az id-ra a 2.-nál a data-target-re hivatkozik (a target mindkettőben a változó, amit itt, kicsit följebb definiáltam)
+			scrollTop: target_place //('#' + target) === ('[data-target="' + target + '"]'), csak az elsőnél az id-ra a 2.-nál a data-target-re hivatkozik (a target mindkettőben a változó, amit itt, kicsit följebb definiáltam) (lehet position kell offset helyett)
 		}, scroll_down_speed);
 	});
+
+	/*//a modal megnyitása
+	var $buttons = $('[data-button]');
+	$buttons.click(function() {
+		var $button = $(this);
+		var modal = $button.data('button') //mintha attr('data-link') lenne
+		$('[data-modal="' + modal + '"]').css('display', 'block');
+	});*/
 
 	//a back_to_top_button
 	var $back_to_top_button = $('.back_to_top_button');

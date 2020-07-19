@@ -6,7 +6,7 @@
 		//megnézi h van-e lementve cookie
 		if (isset($_COOKIE["hetyey_weblap_haha"])) { //a cookie neve, ahogy lementődik majd a gépre!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			//ha igen, akkor megkeresi a táblázatban a hozzátartozó felhasználót
-			$stmt = $conn->prepare("SELECT user_id FROM reisen__members WHERE session_id = ?");
+			$stmt = $conn->prepare("SELECT user_id FROM " . TABLE_NAME_REISEN__MEMBERS . " WHERE session_id = ?");
 			$stmt->bind_param("s", $_COOKIE["hetyey_weblap_haha"]); //a cookie neve, ahogy lementődik majd a gépre!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			$stmt->execute();
 			$stmt->store_result();
@@ -15,7 +15,7 @@
 
 			//ha talál felhasználót, pontosan egyet, kimenti az adatait
 			if ($num_rows_cookies == 1) {
-				$stmt = $conn->prepare("SELECT user_id, username, password, email FROM reisen__members WHERE session_id = ?");
+				$stmt = $conn->prepare("SELECT user_id, username, password, email FROM " . TABLE_NAME_REISEN__MEMBERS . " WHERE session_id = ?");
 				$stmt->bind_param("s", $_COOKIE["hetyey_weblap_haha"]); //a cookie neve, ahogy lementődik majd a gépre!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				$stmt->execute();
 				$stmt->store_result();

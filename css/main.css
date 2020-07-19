@@ -311,7 +311,21 @@ body {
     background-size: cover;
 }
 
+
+/* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed 
+@media only screen and (max-device-width: 1024px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+}*/
+
+
 /* ----------------- lightbox ----------------------------*/
+
+/* amikor írtam nem kellett bele, de lehet h a későbbiekben változtatok olyat, ami miatt kelleni fog!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+* {
+    box-sizing: border-box; egy elem méretébe beletartozik a content-border-padding is, csak a margin nem, alapértelemett ként csak a content
+}*/
 
 .lightbox_modal img {
     max-width: 100%;

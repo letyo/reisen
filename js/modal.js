@@ -160,7 +160,7 @@ function plusSlides(wich_modal, wich_slide) {
    //kitörli a visszaszámlálást, h minden egyes kattintás után ugyanaddig maradjon az adott kép, mintha nem kattintottunk volna (ami ahhoz van beállítva h magától váltson a dia)
    clearTimeout(auto);
    //újra beállítja a visszaszámlálást a diákhoz
-   auto = setTimeout(autoSlides, 5000);
+   auto = setTimeout(autoSlides, 10000);
    slideIndex += wich_slide;
    showSlides(wich_modal, slideIndex);
 }
@@ -170,7 +170,7 @@ function currentSlide(wich_modal, wich_slide) {
    //kitörli a visszaszámlálást, h minden egyes kattintás után ugyanaddig maradjon az adott kép, mintha nem kattintottunk volna (ami ahhoz van beállítva h magától váltson a dia)
    clearTimeout(auto);
    //újra beállítja a visszaszámlálást a diákhoz   
-   auto = setTimeout(autoSlides, 5000);
+   auto = setTimeout(autoSlides, 10000);
    slideIndex = wich_slide;
    showSlides(wich_modal, slideIndex);
 }
@@ -221,6 +221,6 @@ function autoSlides() {
       }
       fadeIn(wich_modal);
       //ezzel vált magától a képek között
-      auto = setTimeout(autoSlides, 5000);
+      auto = setTimeout(autoSlides, 10000);
    }
 }
